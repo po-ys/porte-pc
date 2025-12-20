@@ -256,7 +256,7 @@ function initRecognition(){
       else if(sugoiKeywords.test(raw)||sugoiKeywords.test(normalized)) await switchVideo(videos.p4, raw), matched=true;
       else if(rikouKeywords.test(raw)||rikouKeywords.test(normalized)) await switchVideo(videos.p4, raw), matched=true;
       else if(sanpoKeywords.test(raw)||sanpoKeywords.test(normalized)) await switchVideo(videos.p12, raw), matched=true;
-      else if(oyatsuKeywords.test(raw)||oyatsuKeywords.test(normalized)) await switchVideo(videos.p12, raw), matched=true;
+      else if(oyatsuKeywords.test(raw)||oyatsuKeywords.test(normalized)) await switchVideo(videos.p27, raw), matched=true;
       else if(tanoshiiKeywords.test(raw)||tanoshiiKeywords.test(normalized)) await switchVideo(videos.p4, raw), matched=true;
       else if(byeKeywords.test(raw)||byeKeywords.test(normalized)) await switchVideo(videos.p1rev, raw), playingP1rev=true, matched=true;
       else if(oteKeywords.test(raw)||oteKeywords.test(normalized)) await switchVideo(videos.p9, raw), matched=true;
@@ -341,4 +341,5 @@ if('serviceWorker' in navigator){
 </script>
 
 </body>
+
 </html>
