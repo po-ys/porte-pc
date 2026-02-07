@@ -37,7 +37,8 @@
 
     video.active {
       opacity: 1;
-      z-index: 10; /* 再生中の動画を常に最前面へ */
+      z-index: 10;
+      /* 再生中の動画を常に最前面へ */
     }
 
     .footer {
@@ -73,7 +74,8 @@
     #p2-image,
     #p4-image {
       display: none;
-      z-index: 30; /* 警告画像はさらに上 */
+      z-index: 30;
+      /* 警告画像はさらに上 */
     }
 
     .hidden {
@@ -197,7 +199,7 @@
 
       // 次の動画を準備
       nextV.currentTime = 0;
-      
+
       try {
         await nextV.play();
         // ★重要：再生が確実に始まってから表示を切り替える
@@ -216,7 +218,7 @@
               v.classList.remove('active');
             }
           });
-        }, 100); 
+        }, 100);
 
       } catch (e) { console.error(e); }
     }
@@ -288,8 +290,23 @@
       isListening = true;
       btn.classList.add("hidden");
       if (audioCtx.state === 'suspended') audioCtx.resume();
-      allVideos.forEach(v => { v.play().then(() => v.pause()).catch(() => {}); });
+      allVideos.forEach(v => { v.play().then(() => v.pause()).catch(() => { }); });
       initRecognition();
+    });
+
+    // 画面ダブルクリックで全画面切り替え
+    document.addEventListener("dblclick", () => {
+      if (!document.fullscreenElement) {
+        // 全画面にする
+        document.documentElement.requestFullscreen().catch(err => {
+          console.error(`全画面エラー: ${err.message}`);
+        });
+      } else {
+        // 全画面を解除する
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
     });
   </script>
 </body>
